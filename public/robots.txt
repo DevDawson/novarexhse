@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /storage/framework/
+Disallow: /storage/logs/
+
+Sitemap: https://novarex.co.tz/sitemap.xml
