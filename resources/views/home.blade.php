@@ -510,7 +510,7 @@
               <span>{{ substr($day->day_name, 0, 3) }}</span>
               <strong>
                 @if($day->is_open)
-                  {!! ($day->open_time ?: 'Open') . ($day->close_time ? ' &nbsp;&mdash;&nbsp; ' . e($day->close_time) : '') !!}
+                  {!! ($day->open_time ?: 'Open') . ($day->close_time ? ' &nbsp; - &nbsp; ' . e($day->close_time) : '') !!}
                 @else
                   Closed
                 @endif
