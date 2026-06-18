@@ -123,7 +123,7 @@ class HomeController extends Controller
             )),
         ];
 
-        return view('home', compact(
+        return theme_view('home', compact(
             'settings', 'services', 'courses', 'features', 'testimonials', 'gallery',
             'sectors', 'faqs', 'posts', 'corporateEmails', 'workingDays',
             'hero', 'about', 'homeStats', 'marqueeItems', 'heroTitle', 'heroStyle',

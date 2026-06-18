@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\AnalyticsPage;
+use App\Filament\Pages\AppearancePage;
 use App\Filament\Pages\Dashboard;
 use App\Filament\Pages\ExpertisePage;
 use App\Filament\Pages\LegalPage;
@@ -42,6 +43,7 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
                 WebsiteSettings::class,
+                AppearancePage::class,
                 ExpertisePage::class,
                 LegalPage::class,
                 WorkingDaysPage::class,

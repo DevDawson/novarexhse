@@ -48,7 +48,7 @@ class BlogController extends Controller
                 )),
             ];
 
-            return view('blog.show', compact('post', 'settings', 'seo'));
+            return theme_view('blog.show', compact('post', 'settings', 'seo'));
         }
 
         // Post not found — show 404 UI with HTTP 404 status
@@ -60,8 +60,7 @@ class BlogController extends Controller
             'jsonLd'      => '',
         ];
 
-        return response(
-            view('blog.show', compact('settings', 'seo'))->with('post', null),
+        return response(theme_view('blog.show', compact('settings', 'seo'))->with('post', null),
             404
         );
     }

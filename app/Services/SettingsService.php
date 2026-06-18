@@ -53,6 +53,7 @@ class SettingsService
         'meta_title'              => 'NOVAREX HSE & Sustainability Ltd - Protecting People. Preserving Environment.',
         'meta_description'        => 'NOVAREX HSE & Sustainability Ltd - Professional HSE, Environmental, ISO, and Sustainability consultancy based in Mwanza, Tanzania.',
         'meta_keywords'           => 'HSE consultancy, sustainability, ISO, environmental consultancy, Mwanza Tanzania',
+        'active_theme'            => 'saas',
     ];
 
     public static function all(): array

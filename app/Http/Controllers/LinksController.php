@@ -40,6 +40,6 @@ class LinksController extends Controller
             )),
         ];
 
-        return view('links', compact('settings', 'links', 'seo'));
+        return theme_view('links', compact('settings', 'links', 'seo'));
     }
 }

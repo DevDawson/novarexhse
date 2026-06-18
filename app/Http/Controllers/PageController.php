@@ -71,6 +71,6 @@ HTML;
             )),
         ];
 
-        return view('page', compact('settings', 'title', 'content', 'slug', 'seo'));
+        return theme_view('page', compact('settings', 'title', 'content', 'slug', 'seo'));
     }
 }
