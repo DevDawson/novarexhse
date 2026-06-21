@@ -15,7 +15,7 @@ class BlogController extends Controller
     {
         $post = Post::where('slug', $slug)->where('status', 'published')->first();
 
-        AnalyticsEvent::track('page_view', '/blog/' . $slug, $request->ip(), $request->userAgent());
+        AnalyticsEvent::track('/blog/' . $slug, $post?->title ?? '');
 
         $settings = SettingsService::all();
 

@@ -24,7 +24,7 @@ class PageController extends Controller
         $meta     = self::PAGES[$slug];
         $settings = SettingsService::all();
 
-        AnalyticsEvent::track('page_view', $meta['path'], $request->ip(), $request->userAgent());
+        AnalyticsEvent::track($meta['path']);
 
         $title   = (string) ($settings[$meta['title_key']] ?? $slug);
         $content = (string) ($settings[$meta['content_key']] ?? '');

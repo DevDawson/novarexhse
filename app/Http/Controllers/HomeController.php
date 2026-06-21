@@ -23,7 +23,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        AnalyticsEvent::track('page_view', '/', $request->ip(), $request->userAgent());
+        AnalyticsEvent::track('/');
 
         $settings       = SettingsService::all();
         $services       = Service::active()->get();

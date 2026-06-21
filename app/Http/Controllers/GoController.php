@@ -19,7 +19,7 @@ class GoController extends Controller
 
         ProfileLink::where('id', $id)->increment('clicks');
 
-        AnalyticsEvent::track('link_click', '/go/' . $id, $request->ip(), $request->userAgent());
+        AnalyticsEvent::track('/go/' . $id, '', 'link_click');
 
         return redirect()->away($link->url);
     }
