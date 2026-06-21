@@ -26,6 +26,12 @@ class Admin extends Authenticatable implements FilamentUser
         return $this->password_hash;
     }
 
+    // Filament's ResetPassword does forceFill(['password' => ...]) — intercept it
+    public function setPasswordAttribute(string $value): void
+    {
+        $this->attributes['password_hash'] = $value;
+    }
+
     // Called by Filament's password reset flow to save the new password
     public function resetPassword(string $password): void
     {
