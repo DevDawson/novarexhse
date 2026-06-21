@@ -33,7 +33,9 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->passwordReset()
             ->authGuard('admin')
+            ->authPasswordBroker('admins')
             ->colors([
                 'primary' => Color::Blue,
                 'success' => Color::Green,

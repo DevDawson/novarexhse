@@ -5,6 +5,7 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 class Admin extends Authenticatable implements FilamentUser
 {
@@ -16,10 +17,17 @@ class Admin extends Authenticatable implements FilamentUser
         'last_login' => 'datetime',
     ];
 
-    // Laravel auth expects 'password' column; we have 'password_hash'
+    // Laravel auth expects 'password' column; we use 'password_hash'
     public function getAuthPassword(): string
     {
         return $this->password_hash;
+    }
+
+    // Called by Filament's password reset flow to save the new password
+    public function resetPassword(string $password): void
+    {
+        $this->password_hash = Hash::make($password);
+        $this->save();
     }
 
     public function canAccessPanel(Panel $panel): bool
