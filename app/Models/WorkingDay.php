@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WorkingDay extends Model
 {
-    protected $fillable = ['day_name', 'open_time', 'close_time', 'is_open', 'sort_order'];
+    protected $fillable = ['day_name', 'open_time', 'close_time', 'is_open', 'sort_order', 'note'];
 
     public $timestamps = false;
 

@@ -27,7 +27,7 @@ class WorkingDaysPage extends Page implements HasForms
 
     public function mount(): void
     {
-        $days = WorkingDay::orderBy('day_order')->get()->map(fn ($d) => [
+        $days = WorkingDay::orderBy('sort_order')->get()->map(fn ($d) => [
             'id'          => $d->id,
             'day_name'    => $d->day_name,
             'is_open'     => (bool) $d->is_open,

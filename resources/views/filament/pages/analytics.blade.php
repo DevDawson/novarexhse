@@ -26,7 +26,7 @@
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse($this->topPages as $row)
                 <tr>
-                    <td class="px-6 py-3 text-sm text-gray-700 dark:text-gray-300">{{ $row['page_url'] }}</td>
+                    <td class="px-6 py-3 text-sm text-gray-700 dark:text-gray-300">{{ $row['path'] }}</td>
                     <td class="px-6 py-3 text-sm text-right font-semibold text-gray-800 dark:text-gray-200">{{ number_format($row['views']) }}</td>
                 </tr>
                 @empty

@@ -31,8 +31,8 @@ class AnalyticsPage extends Page
         ];
 
         $this->topPages = (clone $base)
-            ->select('page_url', DB::raw('COUNT(*) as views'))
-            ->groupBy('page_url')
+            ->select('path', DB::raw('COUNT(*) as views'))
+            ->groupBy('path')
             ->orderByDesc('views')
             ->limit(20)
             ->get()
