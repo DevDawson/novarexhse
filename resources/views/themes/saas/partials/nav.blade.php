@@ -1,19 +1,58 @@
-{{-- SaaS Navbar --}}
+{{-- SaaS Header: top bar + navbar --}}
+<header class="s-header" id="s-header">
+
+{{-- Top announcement marquee --}}
+<div class="s-top-bar" aria-label="NOVAREX announcement">
+  <div class="s-top-bar-track">
+    {{-- group 1 --}}
+    <div class="s-top-bar-group">
+      <span class="s-top-bar-item">
+        @if(!empty($settings['logo']))
+          <img src="{{ asset('storage/' . $settings['logo']) }}" alt="" aria-hidden="true" width="16" height="16">
+        @endif
+        NOVAREX HSE &amp; SUSTAINABILITY LTD.
+      </span>
+      <span class="s-top-bar-sep" aria-hidden="true"></span>
+      <span class="s-top-bar-item">PROTECTING PEOPLE</span>
+      <span class="s-top-bar-sep" aria-hidden="true"></span>
+      <span class="s-top-bar-item">PRESERVING ENVIRONMENT</span>
+      <span class="s-top-bar-sep" aria-hidden="true"></span>
+      <span class="s-top-bar-item">BUILDING SUSTAINABILITY</span>
+      <span class="s-top-bar-sep" aria-hidden="true"></span>
+    </div>
+    {{-- group 2 — duplicate for seamless loop --}}
+    <div class="s-top-bar-group" aria-hidden="true">
+      <span class="s-top-bar-item">
+        @if(!empty($settings['logo']))
+          <img src="{{ asset('storage/' . $settings['logo']) }}" alt="" width="16" height="16">
+        @endif
+        NOVAREX HSE &amp; SUSTAINABILITY LTD.
+      </span>
+      <span class="s-top-bar-sep"></span>
+      <span class="s-top-bar-item">PROTECTING PEOPLE</span>
+      <span class="s-top-bar-sep"></span>
+      <span class="s-top-bar-item">PRESERVING ENVIRONMENT</span>
+      <span class="s-top-bar-sep"></span>
+      <span class="s-top-bar-item">BUILDING SUSTAINABILITY</span>
+      <span class="s-top-bar-sep"></span>
+    </div>
+  </div>
+</div>
+
+{{-- Main navbar --}}
 <nav class="s-navbar" id="s-navbar">
   <div class="container">
     <div class="s-nav-inner">
 
       {{-- Brand --}}
       <a href="{{ route('home') }}#top" class="s-brand">
-        @if(!empty($settings['logo']))
-          <div class="s-brand-logo">
-            <img src="{{ asset('storage/' . $settings['logo']) }}" alt="{{ $settings['website_short_name'] ?? 'NOVAREX' }} Logo" width="38" height="38">
-          </div>
-        @else
-          <div class="s-brand-logo">
-            <i class="fa-solid fa-leaf" style="color:#fff;font-size:1rem"></i>
-          </div>
-        @endif
+        <div class="s-brand-logo">
+          @if(!empty($settings['logo']))
+            <img src="{{ asset('storage/' . $settings['logo']) }}" alt="{{ $settings['website_short_name'] ?? 'NOVAREX' }} Logo" width="40" height="40">
+          @else
+            <span class="s-brand-logo-initials">NVX</span>
+          @endif
+        </div>
         <div>
           <span class="s-brand-name">{{ $settings['website_short_name'] ?? 'NOVAREX' }}</span>
           <span class="s-brand-sub">{{ $settings['website_subtitle'] ?? 'HSE & Sustainability' }}</span>
@@ -60,15 +99,17 @@
   </div>
 </nav>
 
+</header>{{-- /.s-header --}}
+
 {{-- Mobile offcanvas --}}
 <div class="offcanvas offcanvas-end" tabindex="-1" id="navOffcanvas" aria-labelledby="navOffcanvasLabel" style="max-width:300px">
   <div class="offcanvas-header border-bottom">
     <div class="s-brand">
       <div class="s-brand-logo">
         @if(!empty($settings['logo']))
-          <img src="{{ asset('storage/' . $settings['logo']) }}" alt="{{ $settings['website_short_name'] ?? 'NOVAREX' }}" width="38" height="38">
+          <img src="{{ asset('storage/' . $settings['logo']) }}" alt="{{ $settings['website_short_name'] ?? 'NOVAREX' }}" width="40" height="40">
         @else
-          <i class="fa-solid fa-leaf" style="color:#fff;font-size:1rem"></i>
+          <span class="s-brand-logo-initials">NVX</span>
         @endif
       </div>
       <div>

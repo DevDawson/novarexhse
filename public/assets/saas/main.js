@@ -219,7 +219,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const el = id ? document.getElementById(id) : null;
     if (!el) return;
     e.preventDefault();
-    const offset = 80;
+    const offset = 110;
     window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
     const oc = document.querySelector('.offcanvas.show');
     if (oc) { const bsOc = bootstrap.Offcanvas.getInstance(oc); if (bsOc) bsOc.hide(); }

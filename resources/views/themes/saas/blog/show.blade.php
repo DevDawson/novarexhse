@@ -26,9 +26,9 @@
     <a href="{{ route('home') }}" class="s-brand">
       <div class="s-brand-logo">
         @if(!empty($settings['logo']))
-          <img src="{{ asset('storage/' . $settings['logo']) }}" alt="{{ $settings['website_short_name'] ?? 'NOVAREX' }}" width="38" height="38">
+          <img src="{{ asset('storage/' . $settings['logo']) }}" alt="{{ $settings['website_short_name'] ?? 'NOVAREX' }}" width="40" height="40">
         @else
-          <i class="fa-solid fa-leaf" style="color:#fff;font-size:1rem"></i>
+          <span class="s-brand-logo-initials">NVX</span>
         @endif
       </div>
       <span class="s-brand-name">{{ $settings['website_short_name'] ?? 'NOVAREX' }}</span>
