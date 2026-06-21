@@ -1,5 +1,28 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/novarexc/public_html
-    - /bin/cp -R * $DEPLOYPATH
+    # ── Deployment target ──────────────────────────────────────────────────────
+    - export DEPLOYPATH=/home/novarexc/public_html/
+
+    # ── Sync project files ─────────────────────────────────────────────────────
+    # .env, storage, vendor are preserved on server (not overwritten)
+    - /usr/bin/rsync -az --delete --exclude='.git/' --exclude='.env' --exclude='storage/' --exclude='vendor/' --exclude='node_modules/' --exclude='public/storage' --exclude='public/hot' --exclude='public/build' --exclude='_ide_helper.php' --exclude='_ide_helper_models.php' --exclude='.phpactor.json' --exclude='phpunit.xml' --exclude='CLAUDE.md' . $DEPLOYPATH
+
+    # ── Composer: install production dependencies ───────────────────────────────
+    - /usr/local/bin/php /usr/local/bin/composer install --no-dev --optimize-autoloader --no-interaction --working-dir=$DEPLOYPATH
+
+    # ── Database migrations ────────────────────────────────────────────────────
+    - /usr/local/bin/php ${DEPLOYPATH}artisan migrate --force
+
+    # ── Storage symlink (creates public/storage → storage/app/public) ──────────
+    - /usr/local/bin/php ${DEPLOYPATH}artisan storage:link
+
+    # ── Cache for production ───────────────────────────────────────────────────
+    - /usr/local/bin/php ${DEPLOYPATH}artisan config:cache
+    - /usr/local/bin/php ${DEPLOYPATH}artisan route:cache
+    - /usr/local/bin/php ${DEPLOYPATH}artisan view:clear
+    - /usr/local/bin/php ${DEPLOYPATH}artisan cache:clear
+
+    # ── Permissions ────────────────────────────────────────────────────────────
+    - /bin/chmod -R 775 ${DEPLOYPATH}storage
+    - /bin/chmod -R 775 ${DEPLOYPATH}bootstrap/cache
