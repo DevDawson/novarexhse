@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('password_hash', 255);
             $table->enum('status', ['active', 'disabled'])->default('active');
             $table->dateTime('last_login')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
